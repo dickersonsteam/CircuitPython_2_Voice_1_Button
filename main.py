@@ -38,7 +38,10 @@ audio_pin.play(mixer)
 pad_length = 8.00
 start_time = time.monotonic()
 mixer.play(long_sample, voice=0)
-    
+
+
+was_released = True
+
 # main body loop
 # check buttons and play sample in mixer
 while True:
@@ -47,12 +50,13 @@ while True:
         mixer.play(long_sample, voice=0) 
        
 
-    if not button.value:
+    if not button.value and was_released:
+        was_released = False
         mixer.play(short_sample, voice=1)
         print("Playing sample.")
+    elif button.value and not was_released:
+        was_released = True
     else:
         print("Silence")
-        
-    # debounce delay
-    time.sleep(0.1)
+        time.sleep(0.05)
     
