@@ -8,7 +8,7 @@ short_sample = audioio.WaveFile(open("kick.wav", "rb"))
 long_sample = audioio.WaveFile(open("pad3mini.wav", "rb"))
 
 # list all input buttons here
-button = digitalio.DigitalInOut(board.D3)
+button = digitalio.DigitalInOut(board.D11)
 
 # initialize speaker output pin
 audio_pin = audioio.AudioOut(board.A0)
